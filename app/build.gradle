@@ -11,7 +11,7 @@ kapt {
 }
 apply plugin: 'kotlin-parcelize'
 
-apply from: '../signing.gradle'
+//apply from: '../signing.gradle'
 
 //#ifdef NONFREE
 buildscript {
