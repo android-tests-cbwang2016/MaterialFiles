@@ -2,7 +2,7 @@
 
 [本文中文版](README_zh-CN.md)
 
-[![Android CI status](https://github.com/zhanghai/MaterialFiles/workflows/Android%20CI/badge.svg)](https://github.com/zhanghai/MaterialFiles/actions) [![GitHub release](https://img.shields.io/github/v/release/zhanghai/MaterialFiles)](https://github.com/zhanghai/MaterialFiles/releases) [![License](https://img.shields.io/github/license/zhanghai/MaterialFiles?color=blue)](LICENSE)
+[![Android CI status](https://github.com/android-tests-cbwang2016/MaterialFiles/workflows/Android%20CI/badge.svg)](https://github.com/android-tests-cbwang2016/MaterialFiles/actions) [![GitHub release](https://img.shields.io/github/v/release/android-tests-cbwang2016/MaterialFiles)](https://github.com/android-tests-cbwang2016/MaterialFiles/releases) [![License](https://img.shields.io/github/android-tests-cbwang2016/zhanghai/MaterialFiles?color=blue)](LICENSE)
 
 An open source Material Design file manager, for Android 5.0+.
 
