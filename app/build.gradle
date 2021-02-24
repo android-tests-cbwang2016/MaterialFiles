@@ -73,7 +73,7 @@ android {
         //        nativeSymbolUploadEnabled true
         //    }
 //#endif
-        }
+        //}
     }
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
