@@ -19,10 +19,10 @@ jobs:
       - name: Build APK
         run: bash ./gradlew assembleRelease --stacktrace
       - name: Upload APK
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: apk
-          path: app/build/outputs/apk/release/app-release-unsigned.apk 
+          path: app/build/outputs/apk/release/*.apk 
   release:
     name: Release APK
     needs: apk
@@ -30,9 +30,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download APK from build
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v2
         with:
           name: apk  
+          path: apk
       - name: Get short SHA
         id: slug
         run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
@@ -64,5 +65,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ${{steps.sign_app.outputs.signedReleaseFile}}
-          asset_name: app-release.apk
+          asset_name: ${{ github.event.repository.name }}-${{ steps.slug.outputs.sha8 }}.apk
           asset_content_type: application/zip
