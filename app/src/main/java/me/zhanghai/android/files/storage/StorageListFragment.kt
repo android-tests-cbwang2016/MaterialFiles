@@ -21,14 +21,16 @@ import com.h6ah4i.android.widget.advrecyclerview.utils.WrapperAdapterUtils
 import me.zhanghai.android.files.R
 import me.zhanghai.android.files.databinding.StorageListFragmentBinding
 import me.zhanghai.android.files.settings.Settings
+import me.zhanghai.android.files.util.createIntent
 import me.zhanghai.android.files.util.fadeToVisibilityUnsafe
 import me.zhanghai.android.files.util.finish
 import me.zhanghai.android.files.util.getDrawable
+import me.zhanghai.android.files.util.startActivitySafe
 
-class StorageListFragment : Fragment(), StorageAdapter.Listener {
+class StorageListFragment : Fragment(), StorageListAdapter.Listener {
     private lateinit var binding: StorageListFragmentBinding
 
-    private lateinit var adapter: StorageAdapter
+    private lateinit var adapter: StorageListAdapter
     private lateinit var dragDropManager: RecyclerViewDragDropManager
     private lateinit var wrappedAdapter: RecyclerView.Adapter<*>
 
@@ -55,7 +57,7 @@ class StorageListFragment : Fragment(), StorageAdapter.Listener {
         binding.recyclerView.layoutManager = LinearLayoutManager(
             activity, RecyclerView.VERTICAL, false
         )
-        adapter = StorageAdapter(this)
+        adapter = StorageListAdapter(this)
         dragDropManager = RecyclerViewDragDropManager().apply {
             setDraggingItemShadowDrawable(
                 getDrawable(R.drawable.ms9_composite_shadow_z2) as NinePatchDrawable
@@ -102,14 +104,11 @@ class StorageListFragment : Fragment(), StorageAdapter.Listener {
     }
 
     private fun onAddStorage() {
-        // TODO
-        //val intent = FileListActivity.createPickDirectoryIntent(null)
-        //startActivityForResultSafe(intent, REQUEST_CODE_ADD_STORAGE)
+        startActivitySafe(AddStorageDialogActivity::class.createIntent())
     }
 
     override fun editStorage(storage: Storage) {
-        // TODO
-        //EditStorageDialogFragment.show(storage, this)
+        startActivitySafe(storage.createEditIntent())
     }
 
     override fun moveStorage(fromPosition: Int, toPosition: Int) {
