@@ -21,7 +21,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.google.gms:google-services:4.3.5'
-        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.5.0'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.5.1'
     }
 }
 apply plugin: 'com.google.gms.google-services'
@@ -36,8 +36,8 @@ android {
         applicationId 'me.zhanghai.android.files'
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 22
-        versionName '1.2.0'
+        versionCode 23
+        versionName '1.2.1'
         resValue 'string', 'app_version', versionName + ' (' + versionCode + ')'
         buildConfigField 'String', 'FILE_PROVIDIER_AUTHORITY', 'APPLICATION_ID + ".file_provider"'
         resValue 'string', 'app_provider_authority', applicationId + '.app_provider'
@@ -82,8 +82,6 @@ android {
         // For "Invalid package reference in library; not included in Android: javax.security.sasl.
         // Referenced from org.apache.mina.proxy.ProxyAuthException."
         warning 'InvalidPackage'
-        // Work around androidx-fragment 1.3.1 bug: https://issuetracker.google.com/issues/182388985
-        ignore 'InvalidFragmentVersionForActivityResult'
     }
 }
 
@@ -106,17 +104,17 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_version"
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.core:core-ktx:1.5.0-beta03'
+    implementation 'androidx.core:core-ktx:1.5.0-rc01'
     implementation 'androidx.exifinterface:exifinterface:1.3.2'
-    implementation 'androidx.fragment:fragment-ktx:1.3.1'
-    def androidx_lifecycle_version = '2.3.0'
+    implementation 'androidx.fragment:fragment-ktx:1.3.2'
+    def androidx_lifecycle_version = '2.3.1'
     implementation "androidx.lifecycle:lifecycle-common-java8:$androidx_lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$androidx_lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-process:$androidx_lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$androidx_lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidx_lifecycle_version"
     implementation 'androidx.preference:preference-ktx:1.1.1'
-    implementation 'androidx.recyclerview:recyclerview:1.2.0-beta02'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0-rc01'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation 'com.google.android.material:material:1.3.0'
 
@@ -163,7 +161,7 @@ dependencies {
     implementation "io.coil-kt:coil-gif:$coil_version"
     implementation "io.coil-kt:coil-svg:$coil_version"
     implementation "io.coil-kt:coil-video:$coil_version"
-    implementation 'me.zhanghai.android.appiconloader:appiconloader:1.3.0'
+    implementation 'me.zhanghai.android.appiconloader:appiconloader:1.3.1'
     implementation 'me.zhanghai.android.effortlesspermissions:library:1.1.0'
     implementation 'me.zhanghai.android.fastscroll:library:1.1.5'
     implementation 'me.zhanghai.android.foregroundcompat:library:1.0.0'
@@ -175,13 +173,13 @@ dependencies {
     implementation 'net.sourceforge.streamsupport:android-retrostreams:1.7.3'
     implementation 'org.apache.commons:commons-compress:1.20'
     // Optional dependency of Commons Compress for 7Z LZMA.
-    implementation 'org.tukaani:xz:1.8'
+    implementation 'org.tukaani:xz:1.9'
     implementation 'org.apache.ftpserver:ftpserver-core:1.1.1'
     // Also a dependency of jCIFS-NG and Junrar.
     implementation 'org.slf4j:slf4j-android:1.7.30'
 
 //#ifdef NONFREE
     implementation 'com.google.firebase:firebase-analytics:18.0.2'
-    implementation 'com.google.firebase:firebase-crashlytics-ndk:17.3.1'
+    implementation 'com.google.firebase:firebase-crashlytics-ndk:17.4.0'
 //#endif
 }
